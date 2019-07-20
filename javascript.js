@@ -30,4 +30,14 @@ $(document).ready(function () {
             });
         });
     });
+    $('#leerGetSON').click(function (e) { 
+        e.preventDefault();
+        $.getJSON("empleados.txt",function(data){
+            data=JSON.parse(data);
+            console.log(data);
+        });
+        $.getJSON("empleados.json",function(data){
+            console.log(data);
+        });
+    });
 });
