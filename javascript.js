@@ -1,24 +1,13 @@
 $(document).ready(function () {
-    $('#ajax').click(function (e) { 
+    $('#convertir').click(function (e) { 
         e.preventDefault();
-        $('#listaEmpleados').html('');
-        $.ajax({
-            url:'empleados.json',
-            type:'get',
-            dataType:'json',
-            success:function(data){
-                console.log(data);
-                $.each(data.empleados, function (i, item) { 
-                     $('#listaEmpleados').html($('#listaEmpleados').html()+`
-                     <li> ${item.nombre} </li>
-                     `);
-                });
-            },
-            error:function(xhr,status,error){
-                console.log(xhr);
-                console.log(status);
-                console.log(error);
-            }
+        let opracion=$('#opracion').val();
+        let texto=$('#texto').val();
+        $.get("http://localhost/ajax/convertir.php",
+        {'operacion':opracion,'texto':texto},
+        function(data){
+            console.log(data);
+            $('#listaEmpleados').html(data);
         });
     });
 });
