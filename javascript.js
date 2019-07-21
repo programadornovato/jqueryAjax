@@ -1,13 +1,13 @@
 $(document).ready(function () {
-    $('#convertir').click(function (e) { 
+    $('form').submit(function (e) { 
         e.preventDefault();
-        let opracion=$('#opracion').val();
-        let texto=$('#texto').val();
-        $.get("http://localhost/ajax/convertir.php",
-        {'operacion':opracion,'texto':texto},
-        function(data){
-            console.log(data);
-            $('#listaEmpleados').html(data);
-        });
+        let nombre=$('#nombre').val();
+        let puesto=$('#puesto').val();
+        $.post("http://localhost/ajax/convertir.php", 
+        {'nombre':nombre,'puesto':puesto},
+            function (data, textStatus, jqXHR) {
+                $('#res').html(data);
+            }
+        );
     });
 });
