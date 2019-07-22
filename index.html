@@ -13,20 +13,14 @@
 <body>
 
   <div class="container mt-3">
-    <form>
-      <div class="form-group">
-        <label for="">Nombre</label>
-        <input type="text" class="form-control" id="nombre">
-        <label for="">Puesto</label>
-        <input type="text" class="form-control" id="puesto">
-        <button type="submit" class="btn btn-primary">Enviar</button>
-      </div>
-      <div class="alert alert-primary d-none" role="alert">
-        <strong id="res"></strong>
-      </div>
-      <div class="alert d-none" role="alert" id="estado">
-      </div>
-    </form>
+
+    <button type="button" class="btn btn-primary" id="leerEmpleados">Leer empleados</button>
+    <div class="alert alert-primary" role="alert">
+      <ul id="listaEmpleados">
+        <li>Lista empleados</li>
+      </ul>
+    </div>
+
   </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
