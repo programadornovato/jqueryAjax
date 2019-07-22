@@ -13,7 +13,9 @@ $(document).ready(function () {
                  data-nombre='${item.nombre}' 
                  data-puesto='${item.puesto}' 
                  data-edad='${item.edad}' 
-                 ></i> ${item.nombre} -- ${item.puesto} -- ${item.edad} </li>
+                 ></i> 
+                 <i class="fa fa-trash" aria-hidden="true" data-id='${item.id}' ></i>
+                 ${item.nombre} -- ${item.puesto} -- ${item.edad} </li>
                  `);
             });
         });
@@ -47,6 +49,19 @@ $(document).ready(function () {
         $('#id').val($(this).data('id'));
 
     });
+    $(document).on('click','.fa-trash',function(){
+        let id=$(this).data('id');
+        const linea=$(this).parent();
+        //console.log(id);
+        $.post("http://localhost/ajax/empleados.php", 
+            {"accion":"borrar","id":id},
+            function (data) {
+                //console.log(data);
+                linea.remove();
+            }
+        );
+    });
+    
     $('#editarEmpleado').click(function (e) { 
         e.preventDefault();
         let nombre=$('#nombre').val();
